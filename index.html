@@ -3,62 +3,236 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome to my profile | 🌱Art  of Qadeer</title>
-  <meta name="description" content="Qadeer Arts — Graphic Designer & IT support 🤖portfolio. Creativity, branding, and modern visuals.">
+  <title>Welcome to my profile | Art of Qadeer</title>
+  <meta name="description" content="Qadeer Arts — Graphic Designer & IT Management portfolio. Creativity, branding, and modern visuals.">
   <meta name="author" content="Abdul Qadeer">
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <!-- External CSS -->
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Fullscreen 3D background -->
+  <canvas id="bg3d" aria-hidden="true"></canvas>
+
   <!-- Header -->
-  <header>
-    <h1>Qadeer Arts</h1>
+  <header class="elevate">
+    <h1 class="logo3d">Qadeer Arts</h1>
     <nav>
-      <!-- Navigation links ke liye jagah (aap baad me add kar lena)
-      Example:
+      <!-- Aap apne links baad me add karlain -->
+      <!-- Example:
       <a href="#home">Home</a>
       <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
       <a href="#contact">Contact</a>
       -->
     </nav>
   </header>
 
-  <!-- Home Section -->
-  <section id="home">
-    <h2>Home</h2>
-    <div class="card">
-      <p>Welcome to <span>Qadeer Arts</span> 🎨<br>
-      A place where creativity meets professionalism. I transform ideas into visually compelling designs that speak louder than words. Whether it’s branding, digital artwork, or IT solutions — innovation is always at the core of my work.</p>
+  <!-- Hero / Home -->
+  <section id="home" class="hero">
+    <div class="hero-inner elevate tilt">
+      <h2 class="welcome-3d">Welcome to Qadeer Arts</h2>
+      <p class="tagline">Creativity • Precision • Impact</p>
+
+      <div class="cta-row">
+        <a class="btn primary" href="#about">Explore</a>
+        <a class="btn outline" href="https://qadeer43kh.github.io/Qadeer" target="_blank" rel="noopener">Visit Full Site</a>
+      </div>
     </div>
   </section>
 
-  <!-- About Section -->
+  <!-- About -->
   <section id="about">
     <h2>About Me</h2>
-    <div class="card">
-      <p>Hi 👋,<br>
-      I am <strong>Abdul Qadeer</strong>. Welcome to my profile. I am skilled and passionate about my work.<br><br>
-      A <strong>Graphic Designer & IT Management</strong> with over best of experience. Creativity is the language that my work speaks, and customer satisfaction is always my top priority. We look forward to working with you on your project. ✨</p>
+    <div class="card grid-2 tilt">
+      <div class="about-text">
+        <p>Hi 👋, I am <strong>Abdul Qadeer</strong> — a <strong>Graphic Designer</strong> & <strong>IT Assistant</strong> with 1+ year of experience.  
+        Creativity is the language my work speaks. <br/>Customer satisfaction is my first priority.  
+        We look forward to working with you on your project. ✨</p>
+
+        <ul class="chips">
+          <li>Branding</li><li>Logos</li><li>Social Creatives</li><li>Posters</li><li>IT Support</li>
+        </ul>
+      </div>
+
+      <!-- Profile Uploader (preview only, no server) -->
+      <div class="profile-uploader">
+        <div class="avatar-wrap">
+          <img id="profilePreview" src="" alt="Your profile preview">
+          <div class="placeholder">Upload Profile</div>
+        </div>
+        <input type="file" id="profileInput" accept="image/*">
+        <p class="note">Tip: Ye image aapke browser me save hogi (local). Public server par auto-save nahi hota.</p>
+      </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Portfolio (dummy cards – aap apne projects daal sakte ho) -->
+  <section id="portfolio">
+    <h2>Featured Work</h2>
+    <div class="cards">
+      <article class="card tilt">
+        <h3>Brand Identity</h3>
+        <p>Logo + colors + guidelines for a startup brand.</p>
+      </article>
+      <article class="card tilt">
+        <h3>Social Media Pack</h3>
+        <p>High-impact posts & stories with consistent style.</p>
+      </article>
+      <article class="card tilt">
+        <h3>Poster Series</h3>
+        <p>Bold typography & visual rhythm for campaigns.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact -->
   <section id="contact">
     <h2>Contact</h2>
-    <div class="card">
-      <p><strong>Contact No:</strong>🔴 +92 355 6255581</p>
-      <p><strong>Email:</strong> <a class="accent-link" ✉️href="mailto:qadeer.43kh@gmail.com">qadeer.43kh@gmail.com</a></p>
-      <p><strong>LinkedIn:</strong> Abdul Qadeer</p>
-      <p><strong>Website:</strong> (Coming Soon...)</p>
+    <div class="grid-2">
+      <div class="card tilt">
+        <p><strong>Phone:</strong> +92 355 6255581</p>
+        <p><strong>Email:</strong> <a class="accent-link" href="mailto:qadeer.43kh@gmail.com">qadeer.43kh@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> Abdul Qadeer</p>
+        <p><strong>Website:</strong> <a class="accent-link" href="https://qadeer43kh.github.io/Qadeer" target="_blank" rel="noopener">qadeer43kh.github.io/Qadeer</a></p>
+      </div>
+
+      <!-- Contact Form -->
+      <form id="contactForm" class="card elevate" method="POST" action="https://formspree.io/f/your-endpoint">
+        <!-- NOTE: Formspree/EmailJS endpoint yahan apna add karein -->
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button class="btn primary" type="submit">Send Message</button>
+        <p id="formStatus" class="status" role="status" aria-live="polite"></p>
+        <p class="tiny">Alternate: <a href="mailto:qadeer.43kh@gmail.com?subject=Inquiry%20from%20Qadeer%20Arts">Email directly</a></p>
+      </form>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>Crafted with passion ✨ | © 2025 <span>Qadeer Arts💌</span>. All Rights Reserved.</p>
+    <p>Crafted with passion ✨ | © 2025 <span>Qadeer Arts</span>. All rights reserved.</p>
   </footer>
+
+  <!-- Three.js (3D BG) -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+
+  <script>
+    // ===== 3D BACKGROUND (lightweight Three.js) =====
+    const canvas = document.getElementById('bg3d');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.z = 6;
+
+    // Gradient-ish lights
+    const light1 = new THREE.PointLight(0x1188ff, 1.5, 50);
+    light1.position.set(5, 5, 5);
+    const light2 = new THREE.PointLight(0x0044ff, 1.2, 50);
+    light2.position.set(-5, -2, 3);
+    scene.add(light1, light2);
+
+    // Torus + wireframe for techy look
+    const mat1 = new THREE.MeshStandardMaterial({ color: 0x0aa0ff, metalness: 0.6, roughness: 0.2 });
+    const torus = new THREE.Mesh(new THREE.TorusKnotGeometry(1.1, 0.36, 180, 24), mat1);
+    const wire = new THREE.LineSegments(
+      new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(2.4, 1)),
+      new THREE.LineBasicMaterial({ color: 0x0a6cff, opacity: 0.25, transparent: true })
+    );
+    scene.add(torus, wire);
+
+    function animate() {
+      torus.rotation.x += 0.003;
+      torus.rotation.y += 0.004;
+      wire.rotation.y -= 0.0015;
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+
+    // ===== Hover tilt (3D feel) =====
+    const tilts = document.querySelectorAll('.tilt');
+    tilts.forEach(el => {
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - r.left, y = e.clientY - r.top;
+        const rx = ((y / r.height) - 0.5) * -10;
+        const ry = ((x / r.width) - 0.5) * 10;
+        el.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
+      });
+      el.addEventListener('pointerleave', () => {
+        el.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      });
+    });
+
+    // ===== Profile Upload (local preview + localStorage) =====
+    const input = document.getElementById('profileInput');
+    const img = document.getElementById('profilePreview');
+    const LS_KEY = 'qadeer_profile_img';
+
+    function setPreview(src){
+      img.src = src;
+      img.style.opacity = 1;
+    }
+    // Load from localStorage
+    const saved = localStorage.getItem(LS_KEY);
+    if (saved) setPreview(saved);
+
+    input?.addEventListener('change', (ev) => {
+      const file = ev.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const data = reader.result;
+        localStorage.setItem(LS_KEY, data);
+        setPreview(data);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // ===== Contact Form (simple status text) =====
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('formStatus');
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = 'Sending...';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          statusEl.textContent = 'Thanks! Your message has been sent.';
+        } else {
+          statusEl.textContent = 'Error sending message. Please use email.';
+        }
+      } catch (err) {
+        statusEl.textContent = 'Network error. Please try again or email.';
+      }
+    });
+  </script>
 </body>
 </html>
