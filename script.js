@@ -121,3 +121,5 @@
     }
   });
 })();
+// 
+console.log("Qadeer Arts Website Loaded ✅");
