@@ -1,3 +1,36 @@
+/* ===== header-height auto updater + tilt reset ===== */
+(function headerSpaceHelper(){
+  const header = document.querySelector('header');
+  const root = document.documentElement;
+  const tilts = document.querySelectorAll('.tilt');
+
+  function updateHeaderHeight(){
+    if(!header) return;
+    const h = Math.ceil(header.getBoundingClientRect().height);
+    root.style.setProperty('--header-height', h + 'px');
+    // ensure body padding also updated (fallback)
+    document.body.style.paddingTop = (h + 12) + 'px';
+  }
+
+  // reset tilt transforms on scroll to avoid visual mixing
+  let scrollTimeout;
+  function onScroll(){
+    tilts.forEach(el => el.style.transform = 'rotateX(0deg) rotateY(0deg)');
+    // small debounce to avoid heavy calls
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      // optionally re-enable subtle idle animation or do nothing
+    }, 120);
+  }
+
+  window.addEventListener('resize', updateHeaderHeight);
+  window.addEventListener('orientationchange', updateHeaderHeight);
+  window.addEventListener('load', () => { updateHeaderHeight(); onScroll(); });
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // initial call
+  updateHeaderHeight();
+})();
 // ===== 3D Background (Sphere + Particles) =====
 const canvas = document.getElementById('bg3d');
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
@@ -107,36 +140,3 @@ form?.addEventListener('submit', async e => {
   }
 });
 
-/* ===== header-height auto updater + tilt reset ===== */
-(function headerSpaceHelper(){
-  const header = document.querySelector('header');
-  const root = document.documentElement;
-  const tilts = document.querySelectorAll('.tilt');
-
-  function updateHeaderHeight(){
-    if(!header) return;
-    const h = Math.ceil(header.getBoundingClientRect().height);
-    root.style.setProperty('--header-height', h + 'px');
-    // ensure body padding also updated (fallback)
-    document.body.style.paddingTop = (h + 12) + 'px';
-  }
-
-  // reset tilt transforms on scroll to avoid visual mixing
-  let scrollTimeout;
-  function onScroll(){
-    tilts.forEach(el => el.style.transform = 'rotateX(0deg) rotateY(0deg)');
-    // small debounce to avoid heavy calls
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-      // optionally re-enable subtle idle animation or do nothing
-    }, 120);
-  }
-
-  window.addEventListener('resize', updateHeaderHeight);
-  window.addEventListener('orientationchange', updateHeaderHeight);
-  window.addEventListener('load', () => { updateHeaderHeight(); onScroll(); });
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  // initial call
-  updateHeaderHeight();
-})();
