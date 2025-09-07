@@ -1,7 +1,3 @@
-/* ==========================
-   UPDATED style.css (fixes header overlap + smooth scroll)
-   Replace your old style.css with this file.
-   ========================== */
 
 :root{
   --header-height: 76px; /* default, JS will update dynamically */
