@@ -1,59 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qadeer Arts</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to my profile | Art of Qadeer</title>
+  <meta name="description" content="Qadeer Arts — Graphic Designer & IT Management portfolio. Creativity, branding, and modern visuals.">
+  <meta name="author" content="Abdul Qadeer">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Full 3D animated background -->
-    <canvas id="bg-canvas"></canvas>
+  <!-- 3D Background -->
+  <canvas id="bg3d"></canvas>
 
-    <header id="home">
-        <div class="container">
-            <h1>Qadeer Arts</h1>
-            <p>Where imagination meets precision. I craft designs that don’t just look good, but communicate, inspire, and leave a lasting impression.</p>
-            <a href="#contact" class="btn">Get in Touch</a>
+  <!-- Header -->
+  <header>
+    <h1 class="logo3d">Qadeer Arts</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <h2 class="welcome-3d">Welcome to Qadeer Arts</h2>
+      <p class="tagline">Creativity • Precision • Impact</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#about">Explore</a>
+        <a class="btn outline" href="https://qadeer43kh.github.io/Qadeer" target="_blank">Visit Full Site</a>
+      </div>
+      <p class="visits">👁 Visitors: <span id="visitCount">0</span></p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="card grid-2 tilt">
+      <div class="about-text">
+        <p>Hi 👋, I am <strong>Abdul Qadeer</strong> — a <strong>Graphic Designer</strong> & <strong>IT support</strong>.  
+        Creativity is the language my work speaks. Customer satisfaction is my first priority.  
+        We look forward to working with you on your project. ✨</p>
+
+        <ul class="chips">
+          <li>Branding</li><li>Logos</li><li>Social Creatives</li><li>Posters</li><li>IT Support</li>
+        </ul>
+      </div>
+
+      <!-- Profile Upload -->
+      <div class="profile-uploader">
+        <div class="avatar-wrap">
+          <img id="profilePreview" src="" alt="Your profile preview">
+          <div class="placeholder">Upload Profile</div>
         </div>
-    </header>
+        <input type="file" id="profileInput" accept="image/*">
+        <p class="note">Note: Image local save hogi (sirf aap dekh sako ge).</p>
+      </div>
+    </div>
+  </section>
 
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>Hi 👋, <br>
-               I am Abdul Qadeer, a passionate Graphic Designer & IT Assistant with over 1 year of hands-on experience. My creations speak in colors, shapes, and pixels, turning ideas into visual stories that resonate. ✨ Customer satisfaction isn’t just a goal—it’s a standard I live by.</p>
-        </div>
-    </section>
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <h2>Featured Work</h2>
+    <div class="cards">
+      <article class="card tilt">
+        <h3>Brand Identity</h3>
+        <p>Logo + colors + guidelines for a startup brand.</p>
+      </article>
+      <article class="card tilt">
+        <h3>Social Media Pack</h3>
+        <p>High-impact posts & stories with consistent style.</p>
+      </article>
+      <article class="card tilt">
+        <h3>Poster Series</h3>
+        <p>Bold typography & visual rhythm for campaigns.</p>
+      </article>
+    </div>
+  </section>
 
-    <section id="portfolio">
-        <div class="container">
-            <h2>Portfolio</h2>
-            <p>Take a glimpse into my world of creativity. From digital graphics to innovative layouts, my work transforms concepts into experiences. (Coming Soon...)</p>
-        </div>
-    </section>
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="grid-2">
+      <div class="card tilt">
+        <p><strong>Phone:</strong> +92 355 6255581</p>
+        <p><strong>Email:</strong> <a href="mailto:qadeer.43kh@gmail.com">qadeer.43kh@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> Abdul Qadeer</p>
+        <p><strong>Website:</strong> <a href="https://qadeer43kh.github.io/Qadeer" target="_blank">qadeer43kh.github.io/Qadeer</a></p>
+      </div>
 
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Me</h2>
-            <form id="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-            <div class="contact-info">
-                <p>Phone: +92 355 6255581</p>
-                <p>Email: <a href="mailto:qadeer.43kh@gmail.com">qadeer.43kh@gmail.com</a></p>
-                <p>Website: <a href="https://qadeer43kh.github.io/Qadeer" target="_blank">qadeer43kh.github.io/Qadeer</a></p>
-            </div>
-        </div>
-    </section>
+      <!-- Contact Form -->
+      <form id="contactForm" class="card elevate" method="POST" action="https://formspree.io/f/your-endpoint">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" required>
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button class="btn primary" type="submit">Send Message</button>
+        <p id="formStatus" class="status"></p>
+      </form>
+    </div>
+  </section>
 
-    <footer>
-        <p>Crafted with passion ✨ | © 2025 Qadeer Arts. All Rights Reserved.</p>
-    </footer>
+  <!-- Footer -->
+  <footer>
+    <p>Crafted with passion ✨ | © 2025 <span>Qadeer Arts</span>. All rights reserved.</p>
+  </footer>
 
-    <script src="script.js"></script>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
