@@ -130,7 +130,7 @@ section h2{
   padding:10px 18px;
   border-radius:12px;
   text-decoration:none;
-  font-weight:700;
+  font-weight:500;
   transition: transform .18s ease, box-shadow .18s ease;
 }
 .btn.primary{background:var(--accent); color:#000}
