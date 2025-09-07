@@ -1,54 +1,61 @@
-// Smooth Scroll for navigation links
-document.querySelectorAll("header nav a").forEach(anchor => {
-  anchor.addEventListener("click", function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth"
+// Smooth scroll for all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
     });
-  });
 });
 
-// Contact form handling
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  let name = e.target.name.value;
-  let email = e.target.email.value;
-  let message = e.target.message.value;
-
-  // Show message on page instead of only alert
-  let successMsg = document.createElement("p");
-  successMsg.innerText = `✅ Thank you, ${name}! Your message has been received.`;
-  successMsg.style.color = "#00ff88";
-  successMsg.style.fontWeight = "600";
-  successMsg.style.marginTop = "10px";
-
-  // Add message below form
-  e.target.parentElement.appendChild(successMsg);
-
-  // Reset form
-  e.target.reset();
-
-  // Remove message after 5 seconds
-  setTimeout(() => successMsg.remove(), 5000);
-
-  // Console log (developer side)
-  console.log("📩 New message received:");
-  console.log("Name:", name);
-  console.log("Email:", email);
-  console.log("Message:", message);
+// Contact form submit
+document.getElementById('contact-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert("Thank you! Your message has been sent.");
+    this.reset();
 });
 
-// 3D text hover effect
-const threeDText = document.querySelector(".threeD-text");
-if (threeDText) {
-  threeDText.addEventListener("mousemove", (e) => {
-    const { offsetWidth: width, offsetHeight: height } = threeDText;
-    let x = (e.offsetX / width) - 0.5;
-    let y = (e.offsetY / height) - 0.5;
-    threeDText.style.transform = `rotateX(${y * 15}deg) rotateY(${x * 15}deg)`;
-  });
+// Simple 3D background animation using canvas
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-  threeDText.addEventListener("mouseleave", () => {
-    threeDText.style.transform = "rotateX(0deg) rotateY(0deg)";
-  });
+let stars = [];
+for(let i=0; i<200; i++){
+    stars.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        z: Math.random()*canvas.width
+    });
 }
+
+function animateStars(){
+    ctx.fillStyle = "#f5f5f5";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle = "#ff6f61";
+    for(let i=0; i<stars.length; i++){
+        let star = stars[i];
+        star.z -= 2;
+        if(star.z <= 0){
+            star.z = canvas.width;
+        }
+
+        let k = 128.0 / star.z;
+        let px = star.x * k + canvas.width/2;
+        let py = star.y * k + canvas.height/2;
+
+        ctx.beginPath();
+        ctx.arc(px, py, 2, 0, Math.PI*2);
+        ctx.fill();
+    }
+
+    requestAnimationFrame(animateStars);
+}
+animateStars();
+
+window.addEventListener('resize', ()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
