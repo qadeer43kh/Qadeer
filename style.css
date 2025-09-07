@@ -1,47 +1,140 @@
-:root{
-  --accent:#00ccff;
-  --bg1:#0a0a0f;
-  --bg2:#1a1a22;
-  --text:#ffffff;
-  --muted:#bbbbbb;
+:root {
+  --blue1: #0055aa;
+  --blue2: #0077cc;
+  --bg: #000;
+  --card: #111;
+  --text: #fff;
+  --muted: #bbb;
+  --accent: #00aaff;
 }
 
-/* Reset */
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:var(--text);line-height:1.6;padding-top:70px}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
 
 /* Header */
-header{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);z-index:1000}
-.header-inner{max-width:1100px;margin:auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:1.6rem;font-weight:800;color:var(--accent);white-space:nowrap}
-.main-nav{display:flex;gap:20px}
-.main-nav a{color:var(--text);text-decoration:none;font-weight:600;transition:0.2s}
-.main-nav a:hover{color:var(--accent)}
-
-/* Hero */
-.hero{padding:60px 20px;min-height:70vh;display:flex;align-items:center}
-.hero-inner{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 300px;gap:30px;align-items:center}
-.hero-right img{width:100%;border-radius:12px;box-shadow:0 6px 25px rgba(0,0,0,0.6)}
-@media(max-width:800px){.hero-inner{grid-template-columns:1fr}.hero-right{margin-top:20px}}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(90deg, var(--blue1), var(--blue2));
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+header nav a {
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+header nav a:hover {
+  color: #ffcc00;
+  text-shadow: 0 0 10px #ffcc00;
+}
 
 /* Sections */
-section{padding:60px 20px;max-width:1100px;margin:auto}
-section h2{color:var(--accent);margin-bottom:15px}
+section {
+  padding: 70px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 700;
+}
 
-/* Chips */
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}
-.chips li{list-style:none;background:rgba(255,255,255,0.1);padding:6px 12px;border-radius:20px}
+/* Hero Section */
+.hero {
+  text-align: center;
+}
+.hero p {
+  margin-top: 15px;
+  color: var(--muted);
+}
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-top: 15px;
+  border: 3px solid var(--accent);
+}
 
-/* Portfolio cards */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{background:rgba(255,255,255,0.05);padding:20px;border-radius:12px;text-align:center;box-shadow:0 4px 18px rgba(0,0,0,0.4)}
+/* 3D Text */
+.threeD-text {
+  font-size: 2.5rem;
+  color: #fff;
+  text-shadow: 2px 2px 0 var(--blue1), 4px 4px 0 var(--blue2);
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
 
-/* Contact form */
-form label{display:block;margin-bottom:12px}
-form input,form textarea{width:100%;padding:10px;margin-top:5px;border:none;border-radius:8px;background:rgba(255,255,255,0.1);color:var(--text)}
-form button{margin-top:10px;padding:10px 16px;background:var(--accent);color:#000;border:none;border-radius:8px;font-weight:600;cursor:pointer}
-form button:hover{background:#00a3cc}
+/* Cards */
+.card {
+  background: var(--card);
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+}
+
+/* Contact Form */
+#contactForm {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+#contactForm input, #contactForm textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+#contactForm button {
+  background: var(--blue2);
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+#contactForm button:hover {
+  background: var(--blue1);
+}
 
 /* Footer */
-footer{text-align:center;padding:20px;background:rgba(0,0,0,0.6);margin-top:40px;color:var(--muted)}
+footer {
+  background: #111;
+  color: var(--muted);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  border-top: 1px solid #222;
+}
+footer span {
+  color: #fff;
+  font-weight: 600;
+}
