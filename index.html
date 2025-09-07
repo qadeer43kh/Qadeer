@@ -4,13 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Welcome to my profile | Art of Qadeer</title>
-  <meta name="description" content="Qadeer Arts — Graphic Designer & IT Management portfolio.">
-  <meta name="author" content="Abdul Qadeer">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,12 +12,8 @@
   <!-- Header -->
   <header>
     <div class="header-inner">
-      <div class="logo-wrap">
-        <h1 class="logo3d">Qadeer Arts</h1>
-        <p class="sublogo">Graphic Designer • IT Support</p>
-      </div>
-
-      <nav class="main-nav" aria-label="Main navigation">
+      <h1 class="logo">Qadeer Arts</h1>
+      <nav class="main-nav">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#portfolio">Portfolio</a>
@@ -32,109 +22,65 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- Hero -->
   <section id="home" class="hero">
     <div class="hero-inner">
       <div class="hero-left">
-        <h2 class="welcome-3d">Welcome to Qadeer Arts</h2>
-        <p class="tagline">Creativity • Precision • Impact</p>
-        <div class="cta-row">
-          <a class="btn primary" href="#about">Explore</a>
-          <a class="btn outline" href="https://qadeer43kh.github.io/Qadeer" target="_blank" rel="noopener">Visit Full Site</a>
-        </div>
-        <p class="visits">👁 Visitors (local): <span id="visitCount">0</span></p>
+        <h2>Welcome to Qadeer Arts</h2>
+        <p>Creativity • Precision • Impact</p>
       </div>
-
-      <!-- Profile image (visible to all) -->
       <div class="hero-right">
-        <!-- Upload a file named 'profile.jpg' to your repo and it will show here -->
-        <img id="siteProfile" src="profile.jpg" alt="Qadeer Profile">
+        <!-- Sirf yaha profile photo show hogi -->
+        <img src="profile.jpg" alt="Abdul Qadeer Profile">
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- About -->
   <section id="about">
     <h2>About Me</h2>
-    <div class="grid-2">
-      <div class="card about-card">
-        <p>Hi 👋, I am <strong>Abdul Qadeer</strong> — a <strong>Graphic Designer</strong> & <strong>IT Support</strong> with 1+ year experience. Creativity is the language my work speaks. Customer satisfaction is my priority. We look forward to working with you on your project. ✨</p>
-
-        <ul class="chips">
-          <li>Branding</li><li>Logos</li><li>Social Creatives</li><li>Posters</li><li>IT Support</li>
-        </ul>
-      </div>
-
-      <div class="card profile-card">
-        <div class="avatar-wrap">
-          <img id="profilePreview" src="profile.jpg" alt="Profile">
-        </div>
-        <p class="note">Aap apni profile image repo me upload kar ke replace kar sakte ho (profile.jpg)</p>
-      </div>
-    </div>
+    <p>Hi 👋, I am <strong>Abdul Qadeer</strong>. I am a <strong>Graphic Designer</strong> and <strong>IT Assistant</strong> with 1+ year experience. Creativity is the language that my work speaks. Customer satisfaction is my first priority. We are looking forward to work with you on your project. ✨</p>
+    <ul class="chips">
+      <li>Logos</li>
+      <li>Branding</li>
+      <li>Posters</li>
+      <li>Social Media Design</li>
+      <li>IT Support</li>
+    </ul>
   </section>
 
-  <!-- PORTFOLIO -->
+  <!-- Portfolio -->
   <section id="portfolio">
-    <h2>Featured Work</h2>
+    <h2>Portfolio</h2>
     <div class="cards">
-      <article class="card">
-        <h3>Brand Identity</h3>
-        <p>Logo + colors + guidelines for a startup brand.</p>
-      </article>
-      <article class="card">
-        <h3>Social Media Pack</h3>
-        <p>High-impact posts & stories with consistent style.</p>
-      </article>
-      <article class="card">
-        <h3>Poster Series</h3>
-        <p>Bold typography & visual rhythm for campaigns.</p>
-      </article>
+      <div class="card">Logo Projects</div>
+      <div class="card">Brand Identity</div>
+      <div class="card">Poster Designs</div>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- Contact -->
   <section id="contact">
     <h2>Contact</h2>
-
     <div class="grid-2">
-      <div class="card contact-info">
+      <div class="card">
         <p><strong>Phone:</strong> +92 355 6255581</p>
-        <p><strong>Email:</strong> <a href="mailto:qadeer.43kh@gmail.com">qadeer.43kh@gmail.com</a></p>
+        <p><strong>Email:</strong> qadeer.43kh@gmail.com</p>
         <p><strong>LinkedIn:</strong> Abdul Qadeer</p>
-        <p><strong>Website:</strong> <a href="https://qadeer43kh.github.io/Qadeer" target="_blank">qadeer43kh.github.io/Qadeer</a></p>
       </div>
-
-      <!-- Contact Form (works with Formspree or EmailJS) -->
-      <form id="contactForm" class="card contact-form" method="POST" action="https://formspree.io/f/your-endpoint">
-        <!-- Replace action with your Formspree endpoint -->
-        <label>
-          <span>Name</span>
-          <input id="inpName" type="text" name="name" required>
-        </label>
-
-        <label>
-          <span>Email</span>
-          <input id="inpEmail" type="email" name="email" required>
-        </label>
-
-        <label>
-          <span>Message</span>
-          <textarea id="inpMessage" name="message" rows="5" required></textarea>
-        </label>
-
-        <button class="btn primary" type="submit">Send Message</button>
-        <p id="formStatus" class="status" aria-live="polite"></p>
+      <form class="card" method="POST" action="https://formspree.io/f/your-endpoint">
+        <label>Name <input type="text" name="name" required></label>
+        <label>Email <input type="email" name="email" required></label>
+        <label>Message <textarea name="message" rows="5" required></textarea></label>
+        <button type="submit">Send</button>
       </form>
     </div>
   </section>
 
   <footer>
-    <p>Crafted with passion ✨ | © 2025 <span>Qadeer Arts</span></p>
+    <p>© 2025 Qadeer Arts | Designed with Passion</p>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
