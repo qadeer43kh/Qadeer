@@ -1,190 +1,93 @@
-
 :root{
-  --header-height: 76px; /* default, JS will update dynamically */
-  --accent:#00ccff;      /* change if you want different accent color */
-  --bg1:#080809;
-  --bg2:#0f0f14;
+  --accent:#00ccff;
+  --bg1:#07070a;
+  --bg2:#0f0f12;
   --card:#0f0f13;
   --muted:#bdbdbd;
   --text:#ffffff;
 }
 
+/* reset */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family: 'Poppins', sans-serif;
-  color:var(--text);
+  font-family:'Poppins',sans-serif;
   background: linear-gradient(135deg,var(--bg1),var(--bg2));
-  line-height:1.5;
-  /* IMPORTANT: reserve space for fixed header (JS updates --header-height dynamically) */
-  padding-top: calc(var(--header-height) + 12px);
+  color:var(--text);
+  line-height:1.55;
+  padding-top: calc(var(--header-height,76px) + 12px); /* JS updates --header-height */
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   overflow-x:hidden;
 }
 
-/* ===== Header (fixed) ===== */
+/* Header */
 header{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  height:var(--header-height);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:0 22px;
+  position:fixed; inset:0 0 auto 0;
+  height:var(--header-height,76px);
+  display:flex; align-items:center; justify-content:center;
   z-index:9999;
-  background: rgba(8,8,10,0.65); /* subtle glass */
+  background: rgba(6,6,8,0.6);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-  transition: background .25s ease, height .12s ease;
+  border-bottom:1px solid rgba(255,255,255,0.03);
 }
+.header-inner{width:100%;max-width:1100px;display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
 
-/* Logo */
-header .logo3d{
-  font-weight:700;
-  font-size:1.3rem;
-  color:var(--accent);
-  letter-spacing:0.6px;
-  text-shadow: 0 6px 16px rgba(0,0,0,0.6);
+.logo-wrap{display:flex;flex-direction:column;align-items:flex-start}
+.logo3d{color:var(--accent);font-weight:800;letter-spacing:0.6px;font-size:1.25rem;text-shadow:0 8px 22px rgba(0,0,0,0.6)}
+.sublogo{font-size:0.78rem;color:var(--muted);margin-top:2px}
+
+/* Nav slightly lower look (spacing + pill buttons) */
+.main-nav{display:flex;gap:10px;align-items:center}
+.main-nav a{
+  color:#fff;text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600;
+  transition:all .18s ease;
+  background: rgba(255,255,255,0.012);
 }
+.main-nav a:hover{background: rgba(255,255,255,0.03); color:var(--accent); transform:translateY(-2px);}
 
-/* Nav */
-nav{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-nav a{
-  color: #fff;
-  text-decoration:none;
-  padding:8px 10px;
-  border-radius:8px;
-  font-weight:600;
-  font-size:0.95rem;
-  transition: background .18s ease, color .18s ease, transform .12s ease;
-}
-nav a:hover{
-  background: rgba(255,255,255,0.03);
-  color:var(--accent);
-  transform: translateY(-2px);
-}
+/* Hero */
+.hero{padding:60px 20px 30px;min-height:72vh;display:flex;align-items:center;justify-content:center}
+.hero-inner{max-width:1100px;display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:center}
+@media(max-width:880px){ .hero-inner{grid-template-columns:1fr; padding:14px} .hero-right{margin-top:18px} }
 
-/* Mobile wrap - allow nav to wrap if space tight */
-@media (max-width:600px){
-  header{
-    padding:8px 14px;
-    align-items:center;
-  }
-  nav{
-    gap:8px;
-    flex-wrap:wrap;
-  }
-  nav a{padding:6px 8px; font-size:0.88rem}
-}
+.welcome-3d{font-size:2.4rem;color:var(--accent);text-shadow:0 8px 28px rgba(0,0,0,0.6)}
+.tagline{color:var(--muted);margin-top:8px}
+.cta-row{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700;cursor:pointer}
+.btn.primary{background:var(--accent);color:#002;box-shadow:0 6px 18px rgba(0,204,255,0.12)}
+.btn.outline{border:2px solid var(--accent);color:var(--accent);background:transparent}
+.visits{margin-top:12px;color:var(--muted)}
 
-/* ===== Sections =====
-   Use scroll-margin-top so anchor links don't hide under fixed header
-*/
-section{
-  padding:48px 20px;
-  max-width:1100px;
-  margin:0 auto;
-  box-sizing:border-box;
-  scroll-margin-top: calc(var(--header-height) + 18px);
-}
+/* Profile image visible */
+.hero-right{display:flex;align-items:center;justify-content:center}
+#siteProfile{width:320px;height:320px;object-fit:cover;border-radius:16px;border:6px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(0,0,0,0.7)}
+@media(max-width:880px){ #siteProfile{width:220px;height:220px} }
 
-/* Make sure headings start after top padding */
-section h2{
-  margin-bottom:20px;
-  font-size:1.9rem;
-  color:var(--accent);
-}
+/* sections */
+section{padding:56px 20px;max-width:1100px;margin:0 auto}
+section h2{font-size:1.9rem;color:var(--accent);margin-bottom:18px}
 
-/* Hero tweaks (no overlap) */
-.hero{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-height: calc(72vh - var(--header-height));
-  text-align:center;
-  padding-top:12px; /* extra inner spacing */
-}
-.hero-inner{
-  max-width:920px;
-  margin:0 auto;
-  padding:28px;
-  background: rgba(255,255,255,0.02);
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,0.03);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  transform-style:preserve-3d;
-}
+/* grid 2 */
+.grid-2{display:grid;gap:18px}
+@media(min-width:900px){ .grid-2{grid-template-columns:1fr 1fr} }
 
-/* CTA */
-.cta-row{margin-top:18px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
-.btn{
-  display:inline-block;
-  padding:10px 18px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:500;
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-.btn.primary{background:var(--accent); color:#000}
-.btn.outline{border:2px solid var(--accent); color:var(--accent); background:transparent}
-.btn:hover{transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,0.45)}
+/* cards */
+.card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+.card h3{margin-bottom:8px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 
-/* Grid & cards */
-.grid-2{display:grid; gap:18px}
-@media (min-width:900px){ .grid-2{grid-template-columns:1fr 1fr} }
+/* profile small */
+.avatar-wrap{width:160px;height:160px;border-radius:12px;overflow:hidden;margin:auto;border:3px solid rgba(255,255,255,0.03)}
+.avatar-wrap img{width:100%;height:100%;object-fit:cover;display:block}
 
-.card{
-  background:var(--card);
-  padding:18px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,0.03);
-  transition: transform .25s ease, box-shadow .25s ease;
-  will-change: transform;
-}
-.card:hover{transform:translateY(-6px); box-shadow:0 14px 32px rgba(0,0,0,0.6)}
+/* contact form */
+.contact-form label{display:block;margin-bottom:12px}
+.contact-form input,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.3);color:var(--text)}
+.contact-form button{margin-top:8px}
 
-/* Profile uploader */
-.avatar-wrap{
-  width:170px; height:170px; margin:auto; border-radius:50%; overflow:hidden;
-  border:3px solid rgba(255,255,255,0.06);
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  display:grid; place-items:center;
-}
-.avatar-wrap img{width:100%; height:100%; object-fit:cover; display:block; opacity:1}
+/* form status */
+.status{margin-top:10px;color:var(--accent);font-weight:600}
 
-/* Form fields */
-form input, form textarea{
-  width:100%; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.06);
-  background: rgba(0,0,0,0.35); color:var(--text);
-}
-form label{display:block; margin-bottom:12px}
-
-/* Status text */
-.status{margin-top:8px; color:var(--accent)}
-
-/* Footer */
-footer{padding:20px 10px; text-align:center; color:var(--muted); margin-top:36px}
-
-/* ===== Tilt safety: reset transform smoothly =====
-   When user scrolls we will remove strong transforms (JS helper also included).
-*/
-.tilt{
-  transition: transform .45s cubic-bezier(.2,.9,.25,1);
-  will-change: transform;
-  transform: rotateX(0deg) rotateY(0deg);
-}
-
-/* Small helper: if header height is large, ensure hero doesn't get too small */
-@media (max-height:700px){
-  .hero{min-height:calc(60vh - var(--header-height))}
-}
-
-/* === end of CSS === */
+/* footer */
+footer{padding:18px;text-align:center;color:var(--muted);margin-top:36px}
