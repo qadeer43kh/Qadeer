@@ -3,15 +3,595 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome to my profile | Art of Qadeer</title>
-  <meta name="description" content="Qadeer Arts — Graphic Designer & IT Management portfolio. Creativity, branding, and modern visuals.">
+  <title>Qadeer Arts | Graphic Design & IT Management</title>
+  <meta name="description" content="Professional Graphic Design & IT Management services. Creativity, branding, and modern visuals.">
   <meta name="author" content="Abdul Qadeer">
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6C63FF;
+      --secondary: #FF6584;
+      --accent: #00ccff;
+      --dark: #0f0f1e;
+      --darker: #080810;
+      --light: #F8F9FC;
+      --text: #ffffff;
+      --text-muted: #a0a0c0;
+      --card-bg: #161627;
+      --header-height: 80px;
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--darker), var(--dark));
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding-top: var(--header-height);
+    }
+
+    /* Modern Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5%;
+      background: rgba(10, 10, 20, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    header.scrolled {
+      height: 70px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Modern Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 10px;
+      color: white;
+      font-size: 20px;
+      transform-style: preserve-3d;
+      transition: var(--transition);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    .logo:hover .logo-icon {
+      transform: rotateY(180deg) scale(1.1);
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.5px;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      position: relative;
+      padding: 5px 0;
+      transition: var(--transition);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: var(--transition);
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(108, 99, 255, 0.4);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-5px);
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 5%;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* About Section */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    .about-text p {
+      margin-bottom: 25px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .skill {
+      background: rgba(108, 99, 255, 0.1);
+      color: var(--primary);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Profile Picture */
+    .profile-picture {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-img {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid transparent;
+      background: linear-gradient(135deg, var(--primary), var(--secondary)) border-box;
+      mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      transition: var(--transition);
+    }
+
+    .profile-picture:hover .profile-img {
+      transform: scale(1.05);
+    }
+
+    /* Portfolio Section */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .portfolio-item {
+      background: var(--card-bg);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .portfolio-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .portfolio-info {
+      padding: 25px;
+    }
+
+    .portfolio-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .portfolio-info p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .contact-text h4 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .contact-text p, .contact-text a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-text a:hover {
+      color: var(--accent);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      transform: translateY(-5px);
+    }
+
+    /* Form */
+    .contact-form {
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 15px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.3);
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--darker);
+      padding: 60px 5% 30px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .copyright {
+      color: var(--text-muted);
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Animations */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .float-animation {
+      animation: float 5s infinite ease-in-out;
+    }
+
+    /* Canvas Background */
+    #bg3d {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+      
+      .about-content,
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --header-height: 70px;
+      }
+      
+      header {
+        padding: 0 20px;
+      }
+      
+      nav {
+        gap: 15px;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .btn {
+        padding: 12px 25px;
+      }
+      
+      section {
+        padding: 80px 5%;
+      }
+      
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      nav {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .profile-img {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- 3D Background -->
@@ -19,7 +599,11 @@
 
   <!-- Header -->
   <header>
-    <h1 class="logo3d">Qadeer Arts</h1>
+    <a href="#" class="logo">
+      <div class="logo-icon">Q</div>
+      <div class="logo-text">Qadeer Arts</div>
+    </a>
+    
     <nav>
       <a href="#home">Home</a>
       <a href="#about">About</a>
@@ -28,102 +612,354 @@
     </nav>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section id="home" class="hero">
-    <div class="hero-inner">
-      <h2 class="welcome-3d">Welcome to Qadeer Arts</h2>
-      <p class="tagline">Creativity • Precision • Impact</p>
-      <div class="cta-row">
-        <a class="btn primary" href="#about">Explore</a>
-        <a class="btn outline" href="https://qadeer43kh.github.io/Qadeer" target="_blank">Visit Full Site</a>
+    <div class="hero-content">
+      <h1 class="hero-title">Transforming Ideas into <span>Visual Masterpieces</span></h1>
+      <p class="hero-subtitle">Creative Graphic Designer & IT Specialist crafting compelling visual experiences that elevate brands and engage audiences.</p>
+      <div class="cta-buttons">
+        <a href="#portfolio" class="btn btn-primary">
+          <i class="fas fa-eye"></i> View My Work
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fas fa-paper-plane"></i> Get In Touch
+        </a>
       </div>
-      <p class="visits">👁 Visitors: <span id="visitCount">0</span></p>
     </div>
   </section>
 
-  <!-- About -->
+  <!-- About Section -->
   <section id="about">
-    <h2>About Me</h2>
-    <div class="card grid-2 tilt">
+    <div class="section-title">
+      <h2>About Me</h2>
+      <p>Get to know my skills, experience, and creative process</p>
+    </div>
+    
+    <div class="about-content">
       <div class="about-text">
-        <p>Hi 👋, I am <strong>Abdul Qadeer</strong> — a <strong>Graphic Designer</strong> & <strong>IT support</strong>.  
-        Creativity is the language my work speaks. Customer satisfaction is my first priority.  
-        We look forward to working with you on your project. ✨</p>
-
-        <ul class="chips">
-          <li>Branding</li><li>Logos</li><li>Social Creatives</li><li>Posters</li><li>IT Support</li>
-        </ul>
-      </div>
-
-      <!-- Profile Upload -->
-      <div class="profile-uploader">
-        <div class="avatar-wrap">
-          <img id="profilePreview" src="" alt="Your profile preview">
-          <div class="placeholder">Upload Profile</div>
+        <h3>Creativity is my language, precision is my tool</h3>
+        <p>Hello! I'm Abdul Qadeer, a passionate Graphic Designer and IT Specialist with over 5 years of experience creating visually stunning designs and providing technical solutions.</p>
+        <p>My approach combines artistic creativity with technical expertise to deliver designs that not only look beautiful but also function perfectly across various platforms.</p>
+        
+        <div class="skills">
+          <span class="skill">Branding</span>
+          <span class="skill">Logo Design</span>
+          <span class="skill">UI/UX</span>
+          <span class="skill">Web Design</span>
+          <span class="skill">Social Media</span>
+          <span class="skill">IT Support</span>
+          <span class="skill">Illustration</span>
+          <span class="skill">Print Design</span>
         </div>
-        <input type="file" id="profileInput" accept="image/*">
-        <p class="note">Note: Image local save hogi (sirf aap dekh sako ge).</p>
+      </div>
+      
+      <div class="profile-picture">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Abdul Qadeer" class="profile-img">
       </div>
     </div>
   </section>
 
-  <!-- Portfolio -->
+  <!-- Portfolio Section -->
   <section id="portfolio">
-    <h2>Featured Work</h2>
-    <div class="cards">
-      <article class="card tilt">
-        <h3>Brand Identity</h3>
-        <p>Logo + colors + guidelines for a startup brand.</p>
-      </article>
-      <article class="card tilt">
-        <h3>Social Media Pack</h3>
-        <p>High-impact posts & stories with consistent style.</p>
-      </article>
-      <article class="card tilt">
-        <h3>Poster Series</h3>
-        <p>Bold typography & visual rhythm for campaigns.</p>
-      </article>
+    <div class="section-title">
+      <h2>My Portfolio</h2>
+      <p>A selection of my recent creative work and projects</p>
+    </div>
+    
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1609921212029-bb5a28e60960?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80" alt="Brand Identity Design" class="portfolio-img">
+        <div class="portfolio-info">
+          <h3>Brand Identity Design</h3>
+          <p>Complete branding package for a tech startup including logo, color palette, and brand guidelines.</p>
+          <a href="#" class="btn btn-outline">View Project</a>
+        </div>
+      </div>
+      
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Social Media Campaign" class="portfolio-img">
+        <div class="portfolio-info">
+          <h3>Social Media Campaign</h3>
+          <p>Series of engaging social media graphics and videos for a lifestyle brand's product launch.</p>
+          <a href="#" class="btn btn-outline">View Project</a>
+        </div>
+      </div>
+      
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1588200908342-23b585c03e26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Website Redesign" class="portfolio-img">
+        <div class="portfolio-info">
+          <h3>Website Redesign</h3>
+          <p>Complete UI/UX overhaul for an e-commerce platform focusing on user experience and conversion.</p>
+          <a href="#" class="btn btn-outline">View Project</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact Section -->
   <section id="contact">
-    <h2>Contact</h2>
-    <div class="grid-2">
-      <div class="card tilt">
-        <p><strong>Phone:</strong> +92 355 6255581</p>
-        <p><strong>Email:</strong> <a href="mailto:qadeer.43kh@gmail.com">qadeer.43kh@gmail.com</a></p>
-        <p><strong>LinkedIn:</strong> Abdul Qadeer</p>
-        <p><strong>Website:</strong> <a href="https://qadeer43kh.github.io/Qadeer" target="_blank">qadeer43kh.github.io/Qadeer</a></p>
+    <div class="section-title">
+      <h2>Get In Touch</h2>
+      <p>Let's discuss how we can bring your ideas to life</p>
+    </div>
+    
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="contact-text">
+            <h4>Phone</h4>
+            <p>+92 355 6255581</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-text">
+            <h4>Email</h4>
+            <a href="mailto:qadeer.43kh@gmail.com">qadeer.43kh@gmail.com</a>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-text">
+            <h4>Location</h4>
+            <p>Available for remote work worldwide</p>
+          </div>
+        </div>
+        
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-behance"></i></a>
+          <a href="#"><i class="fab fa-dribbble"></i></a>
+        </div>
       </div>
-
-      <!-- Contact Form -->
-      <form id="contactForm" class="card elevate" method="POST" action="https://formspree.io/f/your-endpoint">
-        <label>
-          <span>Name</span>
-          <input type="text" name="name" required>
-        </label>
-        <label>
-          <span>Email</span>
-          <input type="email" name="email" required>
-        </label>
-        <label>
-          <span>Message</span>
-          <textarea name="message" rows="4" required></textarea>
-        </label>
-        <button class="btn primary" type="submit">Send Message</button>
-        <p id="formStatus" class="status"></p>
-      </form>
+      
+      <div class="contact-form">
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" class="form-control" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>Crafted with passion ✨ | © 2025 <span>Qadeer Arts</span>. All rights reserved.</p>
-  </footer>
+    <div class="footer-content">
+      <div class="footer-logo">Qadeer Arts</div>
+      
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2025 Qadeer Arts. All rights reserved. Designed with ❤️ by Abdul Qadeer</p>
+      </div>
+    </div>
+    </footer>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
-  <script src="script.js"></script>
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Header scroll effect
+      const header = document.querySelector('header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('nav a, .footer-links a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Form submission
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Simulate form submission
+          const submitBtn = contactForm.querySelector('button[type="submit"]');
+          const originalText = submitBtn.innerHTML;
+          
+          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+          submitBtn.disabled = true;
+          
+          setTimeout(() => {
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+          }, 1500);
+        });
+      }
+
+      // 3D Background with Three.js
+      function initThreeJS() {
+        try {
+          const canvas = document.getElementById('bg3d');
+          const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+          
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+          camera.position.z = 5;
+          
+          // Add lights
+          const ambientLight = new THREE.AmbientLight(0x333333);
+          scene.add(ambientLight);
+          
+          const pointLight = new THREE.PointLight(0x00ccff, 1);
+          pointLight.position.set(5, 5, 5);
+          scene.add(pointLight);
+          
+          const pointLight2 = new THREE.PointLight(0xff66cc, 1);
+          pointLight2.position.set(-5, -5, -5);
+          scene.add(pointLight2);
+          
+          // Create particles
+          const particlesGeometry = new THREE.BufferGeometry();
+          const particlesCount = 2000;
+          
+          const posArray = new Float32Array(particlesCount * 3);
+          const colorArray = new Float32Array(particlesCount * 3);
+          
+          for (let i = 0; i < particlesCount * 3; i += 3) {
+            // Positions
+            posArray[i] = (Math.random() - 0.5) * 20;
+            posArray[i + 1] = (Math.random() - 0.5) * 20;
+            posArray[i + 2] = (Math.random() - 0.5) * 20;
+            // Colors
+            colorArray[i] = Math.random();
+            colorArray[i + 1] = Math.random();
+            colorArray[i + 2] = Math.random();
+          }
+          
+          particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+          particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+          
+          const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.05,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.8
+          });
+          
+          const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+          scene.add(particlesMesh);
+          
+          // Create floating shapes
+          const geometry = new THREE.IcosahedronGeometry(1, 0);
+          const material = new THREE.MeshPhongMaterial({
+            color: 0x6C63FF,
+            shininess: 100,
+            transparent: true,
+            opacity: 0.5
+          });
+          
+          const shapes = [];
+          for (let i = 0; i < 5; i++) {
+            const shape = new THREE.Mesh(geometry, material);
+            shape.position.x = (Math.random() - 0.5) * 10;
+            shape.position.y = (Math.random() - 0.5) * 10;
+            shape.position.z = (Math.random() - 0.5) * 10;
+            shape.rotation.x = Math.random() * Math.PI;
+            shape.rotation.y = Math.random() * Math.PI;
+            shapes.push(shape);
+            scene.add(shape);
+          }
+          
+          // Animation
+          function animate() {
+            requestAnimationFrame(animate);
+            
+            particlesMesh.rotation.x += 0.0005;
+            particlesMesh.rotation.y += 0.001;
+            
+            // Animate shapes
+            shapes.forEach((shape, i) => {
+              shape.rotation.x += 0.01;
+              shape.rotation.y += 0.01;
+              shape.position.y += Math.sin(Date.now() * 0.001 + i) * 0.002;
+            });
+            
+            renderer.render(scene, camera);
+          }
+          
+          animate();
+          
+          // Handle window resize
+          window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+          });
+        } catch (error) {
+          console.error('Error initializing 3D background:', error);
+        }
+      }
+      
+      // Initialize 3D background
+      initThreeJS();
+      
+      // Add animation to profile picture on scroll
+      const profileImg = document.querySelector('.profile-img');
+      window.addEventListener('scroll', () => {
+        if (profileImg && window.scrollY > 400) {
+          profileImg.classList.add('float-animation');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
+```
